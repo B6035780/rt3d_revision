@@ -673,24 +673,24 @@ int CopyTIM2Buffer(int sourcex, int sourcey, int destx, int desty, int rot)
 					y = sourcey + (31 - dx);
 					break;
 				case 3:
-					x = sourcex + dx;
-					y = sourcey + dy;
+					x = sourcex + (31 - dy);
+					y = sourcey + (31 - dx);
 					break;
 				case 4:
-					x = sourcex + dx;
-					y = sourcey + dy;
+					x = sourcex + (31 - dx);
+					y = sourcey + (31 - dy);
 					break;
 				case 5:
 					x = sourcex + dx;
 					y = sourcey + (31 - dy);
 					break;
 				case 6:
-					x = sourcex + dx;
-					y = sourcey + dy;
+					x = sourcex + (31 - dy);
+					y = sourcey + dx;
 					break;
 				case 7:
-					x = sourcex + dx;
-					y = sourcey + dy;
+					x = sourcex + dy;
+					y = sourcey + dx;
 					break;
 			}
 			SetBufferPixel(destx + dx, desty + dy, GetPixel(x, y));
