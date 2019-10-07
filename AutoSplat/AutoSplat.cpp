@@ -653,6 +653,13 @@ void SetBufferPixel(int x, int y, Color c)
 int CopyTIM2Buffer(int sourcex, int sourcey, int destx, int desty, int rot)
 {
 	// TO DO: Implement this function (see slides)
+	for (int dy = 0; dy < 32; dy++)
+	{
+		for (int dx = 0; dx < 32; dx++)
+		{
+			SetBufferPixel(destx + dx, desty + dy, GetPixel(sourcex + dx, sourcey + dy));
+		}
+	}
 
 	return 0;
 }
