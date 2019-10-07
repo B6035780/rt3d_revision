@@ -674,7 +674,19 @@ int DrawSegments2Buffer(SEGMENT* pSegments)
 {
 	// TO DO: Implement this function (see slides)
 	// Note the code below should copy the TIM at index "tileIndex" to the map grid square "mapIndex" 
-	// CopyTIM2Buffer(_TIMXPOS(tileIndex), _TIMYPOS(tileIndex), _MAPXPOS(mapIndex), _MAPYPOS(mapIndex), tileRot);
+	int tileIndex(0), tileRot(0), mapIndex(0), comp(4), tiInit(0);
+	CopyTIM2Buffer(_TIMXPOS(tileIndex), _TIMYPOS(tileIndex), _MAPXPOS(mapIndex), _MAPYPOS(mapIndex), tileRot);
+
+	for (int dx = 0; dx < 256; dx++)
+	{
+		for (int ti = 0; ti < 16; ti++)
+		{
+			tileIndex = floor(pSegments[dx].strTilePolyStruct[ti].cTileRef);
+			tileRot = floor(pSegments[dx].strTilePolyStruct[ti].cRot);
+			CopyTIM2Buffer(_TIMXPOS(tileIndex), _TIMYPOS(tileIndex), _MAPXPOS(mapIndex), _MAPYPOS(mapIndex), tileRot);
+			mapIndex++;
+		}
+	}
 
 	return 0;
 }
