@@ -653,31 +653,49 @@ void SetBufferPixel(int x, int y, Color c)
 int CopyTIM2Buffer(int sourcex, int sourcey, int destx, int desty, int rot)
 {
 	// TO DO: Implement this function (see slides)
-	int x, y;
+	int x, y, ogx, ogy;
 	for (int dy = 0; dy < 32; dy++)
 	{
 		for (int dx = 0; dx < 32; dx++)
 		{
+			ogx = sourcex + dx;
+			ogy = sourcey + dy;
 			switch (rot)
 			{
 				case 0:
+					x = ogx;
+					y = ogy;
 					break;
 				case 1:
+					x = sourcex + (31 - dx);
+					y = ogy;
 					break;
 				case 2:
+					x = ogx;
+					y = ogy;
 					break;
 				case 3:
+					x = sourcex + dx;
+					y = sourcey + dy;
 					break;
 				case 4:
+					x = sourcex + dx;
+					y = sourcey + dy;
 					break;
 				case 5:
+					x = sourcex + dx;
+					y = sourcey + (31 - dy);
 					break;
 				case 6:
+					x = sourcex + dx;
+					y = sourcey + dy;
 					break;
 				case 7:
+					x = sourcex + dx;
+					y = sourcey + dy;
 					break;
 			}
-			SetBufferPixel(destx + dx, desty + dy, GetPixel(sourcex + dx, sourcey + dy));
+			SetBufferPixel(destx + dx, desty + dy, GetPixel(x, y));
 		}
 	}
 
